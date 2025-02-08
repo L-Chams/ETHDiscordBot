@@ -6,6 +6,7 @@ import (
 	"github.com/joho/godotenv"
 	"log"
 	"os"
+	"strings"
 )
 
 func main() {
@@ -16,25 +17,29 @@ func main() {
 	}
 
 	// Create a new Discord session
-	dg, err := discordgo.New("Bot " + os.Getenv("API_KEY"))
+	discord, err := discordgo.New("Bot " + os.Getenv("API_KEY"))
 	if err != nil {
 		fmt.Println("Error creating Discord session:", err)
 		return
 	}
 
 	// Add event handlers
-	dg.AddHandler(func(s *discordgo.Session, r *discordgo.Ready) {
+	discord.AddHandler(func(s *discordgo.Session, r *discordgo.Ready) {
 		fmt.Println("Bot is ready!")
 	})
 
-	dg.AddHandler(func(s *discordgo.Session, m *discordgo.MessageCreate) {
+	discord.AddHandler(func(s *discordgo.Session, m *discordgo.MessageCreate) {
 		// Ignore messages from the bot itself
 		if m.Author.ID == s.State.User.ID {
 			return
 		}
 
 		switch {
-		//case strings.Contains(m.Content, "hi")
+		case strings.Contains(m.Content, "hi"):
+
+			discord.ChannelMessageSend(m.ChannelID, "Heyyyyyy")
+		case strings.Contains(m.Content, "Grogu"):
+			discord.ChannelMessageSend(m.ChannelID, "Grogu is my name!!")
 
 		}
 
@@ -47,7 +52,7 @@ func main() {
 	})
 
 	// Open the connection
-	err = dg.Open()
+	err = discord.Open()
 	if err != nil {
 		fmt.Println("Error opening connection:", err)
 		return
