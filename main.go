@@ -35,10 +35,11 @@ func main() {
 		}
 
 		switch {
-		case strings.Contains(m.Content, "hi"): //change out for commands
+		case strings.Contains(strings.ToLower(m.Content), "hi"): //change out for commands
 			discord.ChannelMessageSend(m.ChannelID, "Heyyyyyy")
-		case strings.Contains(m.Content, "Grogu"):
+		case strings.Contains(strings.ToLower(m.Content), "Grogu"):
 			discord.ChannelMessageSend(m.ChannelID, "Grogu is my name!!")
+		case strings.Contains(strings.ToLower(m.Content), "analyze insights"):
 
 		}
 
