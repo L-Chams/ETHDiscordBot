@@ -35,8 +35,7 @@ func main() {
 		}
 
 		switch {
-		case strings.Contains(m.Content, "hi"):
-
+		case strings.Contains(m.Content, "hi"): //change out for commands
 			discord.ChannelMessageSend(m.ChannelID, "Heyyyyyy")
 		case strings.Contains(m.Content, "Grogu"):
 			discord.ChannelMessageSend(m.ChannelID, "Grogu is my name!!")
@@ -44,7 +43,6 @@ func main() {
 		}
 
 		// Print received message
-		fmt.Printf("Message received: %+v\n", *m)
 		fmt.Println("Message received:", m.Content)
 
 		// Send a reply message in the chat
