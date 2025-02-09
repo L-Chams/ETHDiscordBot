@@ -1,4 +1,5 @@
-Overview
+Overview:
+
 In this project, we developed a Discord bot in Go that reads and stores users' messages, along with their associated timestamp and user information. The bot was designed to monitor Discord server activity and collect message data for future analysis.
 
 While we began the process of analyzing the stored messages using Torus, a network designed to securely store and analyze data, the analysis was not fully completed. The plan was to use Torus to generate summaries and statistics about the messages, as well as identify key users in the conversation.
